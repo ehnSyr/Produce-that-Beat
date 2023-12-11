@@ -107,6 +107,10 @@ ggplot(predicted_values, aes(x = Observed, y = Predicted)) +
 linear_regression2 <- lm(formula = Total_Streams ~ Danceability + Energy + Instrumentalness + Liveness + Speechiness, data = spotify_data_clean)
 summary(linear_regression2)
 
+#Shows 44% explained and moves the intercept to 0
+linear_regression3 <- lm(formula = Total_Streams ~ 0 + Beats_per_Minute + Energy +Speechiness + Acousticness, data = spotify_data_clean)
+summary(linear_regression3)
+
 # Create numeric DF to user for correlation analysis
 Spotify_data_correlation <- subset(spotify_data_clean, select = -c(Song_Title, Artist_Name, Song_Release_Date, Days_Since_Today, Spotify_Playlist_Count, Spotify_Charts_Count, Apple_Playlist_Count, Apple_Charts_Count, Deezer_Playlist_Count, Deezer_Charts_Count, Shazam_Charts_Count))
 
